@@ -1,7 +1,8 @@
 ENV["RACK_ENV"] ||= "development"
 
 require 'sinatra/base'
-require './app/models/link'
+#require './app/models/link'
+require_relative './app/data_mapper_setup'
 
 
 
