@@ -4,8 +4,6 @@ require 'sinatra/base'
 #require './app/models/link'
 require_relative './app/data_mapper_setup'
 
-
-
 class Bookmark < Sinatra::Base
   get '/' do
     @links = Link.all
