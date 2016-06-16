@@ -122,12 +122,14 @@ DEPENDENCIES
   data_mapper
   database_cleaner
   dm-postgres-adapter
-  rack
   rake
   rspec
   rspec-sinatra
   sinatra
   sinatra-flash
+
+RUBY VERSION
+   ruby 2.2.1p85
 
 BUNDLED WITH
    1.12.5
