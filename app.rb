@@ -15,9 +15,13 @@ class Bookmark < Sinatra::Base
   end
 
   post '/' do
-    Link.create(url: params[:url], name: params[:name], tag: params[:tag])
-    redirect '/'
-  end
+    link = Link.new(url: params[:url],     # 1. Create a link
+                name: params[:name])
+  tag  = Tag.first_or_create(name: params[:tags])  # 2. Create a tag for the link
+  link.tags << tag                       # 3. Adding the tag to the link's DataMapper collection.
+  link.save                              # 4. Saving the link.
+  redirect to('/')
+end
 
   # start the server if ruby file executed directly
   run! if app_file == $0
