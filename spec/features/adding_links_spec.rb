@@ -4,11 +4,11 @@
 
 feature 'user can add link to homepage' do
   scenario 'user adds site address and title to their bookmark manager' do
-    visit '/add_link'
+    visit 'links/add_link'
     fill_in 'name', with: 'This is BBC'
     fill_in 'url', with: 'www.bbc.co.uk'
     click_button 'Add link'
-    expect(current_path). to eq '/'
+    expect(current_path). to eq '/links'
     expect(page).to have_content ('This is BBC')
   end
 end

@@ -1,7 +1,7 @@
 feature 'Viewing links' do
   scenario 'user visits homepage and can see links' do
       Link.create(url: " http://www.google.co.uk", name: 'google')
-    visit '/'
+    visit '/links'
     expect(page.status_code).to eq 200
     expect(page).to have_content('www.google.co.uk')
   end

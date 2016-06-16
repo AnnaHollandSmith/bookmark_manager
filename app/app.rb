@@ -10,22 +10,27 @@ class Bookmark < Sinatra::Base
   set :session_secret, 'super secret'
   register Sinatra::Flash
 
+
   get '/' do
+      redirect '/links'
+  end
+
+  get '/links' do
     @links = Link.all
     erb :'links/index'
   end
 
-  get '/add_link' do
+  get '/links/add_link' do
     erb :'links/add_link'
   end
 
-  post '/' do
+  post '/links' do
     link = Link.create(url: params[:url], name: params[:name])
     params[:tags].split.each do |tag|
       link.tags << Tag.create(name: tag)
     end
     link.save
-    redirect to('/')
+    redirect to('/links')
   end
 
   get '/tags/:name' do
