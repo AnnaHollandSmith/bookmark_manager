@@ -1,7 +1,4 @@
 feature 'Viewing links' do
-#As a time-pressed user
-#So that I can quickly go to web sites I regularly visit
-#I would like to see a list of links on the homepage
   scenario 'user visits homepage and can see links' do
       Link.create(url: " http://www.google.co.uk", name: 'google')
     visit '/'
@@ -16,9 +13,6 @@ feature 'Viewing links' do
    Link.create(url: 'http://www.bubble-bobble.com', name: 'Bubble Bobble', tags: [Tag.first_or_create(name: 'bubbles')])
  end
 
-#As a time-pressed user
-#So that I can quickly find links on a particular topic
-#I would like to filter links by tag
   scenario 'User can filter links by tag' do
     visit 'tags/bubbles'
     expect(page.status_code).to eq(200)
