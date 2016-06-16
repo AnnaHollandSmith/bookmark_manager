@@ -8,4 +8,15 @@ feature 'Adding tag to a link' do
     link = Link.first
     expect(link.tags.map(&:name)).to include('news')
   end
+
+  scenario 'I can add multiple tags to a new link' do
+  visit '/add_link'
+  fill_in 'url',   with: 'http://www.makersacademy.com/'
+  fill_in 'name', with: 'Makers Academy'
+  # our tags will be space separated
+  fill_in 'tags',  with: 'education ruby'
+  click_button 'Add link'
+  link = Link.first
+  expect(link.tags.map(&:name)).to include('education', 'ruby')
+end
 end
