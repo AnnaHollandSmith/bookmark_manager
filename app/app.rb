@@ -5,6 +5,7 @@ require 'sinatra/flash'
 require_relative 'data_mapper_setup'
 
 class Bookmark < Sinatra::Base
+  use Rack::MethodOverride
 
   enable :sessions
   set :session_secret, 'super secret'
@@ -72,10 +73,11 @@ end
     end
   end
 
-
-
-
-
+  delete '/sessions' do
+    session[:user_id] = nil
+    flash.keep[:notice] = 'goodbye!'
+    redirect to '/links'
+  end
 
   helpers do
       def current_user
